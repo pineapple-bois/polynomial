@@ -5,8 +5,10 @@
 The `Polynomial` class is a Python implementation that represents polynomials and provides various operations on polynomials. It allows you to create, evaluate, manipulate, approximate roots and plot polynomials easily.
 
 ----
-Where a polynomial in a single indeterminate $x$ can be written in the form
+
+Where a polynomial in a single indeterminate $x$ can be written in the form, 
 $a_n x^n+a_{n-1} x^{n-1}+\cdots+a_2 x^2+a_1 x+a_0$
+
 ----
 
 `poly_dict.py` is a function
