@@ -1,2 +1,2 @@
-# polynomial
+# Polynomial
  Implementation of class: Polynomial
