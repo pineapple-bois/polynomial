@@ -4,18 +4,16 @@
 
 The `Polynomial` class is a Python implementation that represents polynomials and provides various operations on polynomials. It allows you to create, evaluate, manipulate, approximate roots and plot polynomials easily.
 
-----
-
 Where a polynomial in a single indeterminate $x$ can be written in the form, 
 $a_n x^n+a_{n-1} x^{n-1}+\cdots+a_2 x^2+a_1 x+a_0$
 
 ----
 
-`poly_dict.py` is a function
+`poly_dict.py` contains a function `decompose_polynomial` which takes a polynomial equation as a string and extracts the coefficients of each term. It returns a dictionary where the keys are the powers and the values are the corresponding coefficients.
 
 ----
-#### Features
 
+##### `Polynomial` features
 - Creation using a dictionary format for coefficients.
 - Evaluation for a given value of `x`.
 - String representation.
@@ -25,9 +23,8 @@ $a_n x^n+a_{n-1} x^{n-1}+\cdots+a_2 x^2+a_1 x+a_0$
 - Plotting using `matplotlib`.
 
 ----
-#### Example Usage
 
-How to use the `Polynomial` class:
+##### `Polynomial` usage
 
 ```python
 # Create a Polynomial object with coefficients {3: 2, 2: -1, 0: 1}:
