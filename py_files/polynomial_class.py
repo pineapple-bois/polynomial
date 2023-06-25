@@ -46,6 +46,10 @@ class Polynomial:
             value += coeff * x ** power
         return value
 
+    def __repr__(self):
+        """" return code for regenerating this instance"""
+        return f"Polynomial({self.coeff})"
+
     def __str__(self):
         terms = []
         for power, coeff in sorted(self.coeff.items(), reverse=True):
@@ -133,24 +137,30 @@ class Polynomial:
     def __add__(self, other):
         coeffsum = {}
 
-        if len(self.coeff) > len(other.coeff):
-            for power, coeff in self.coeff.items():
-                coeffsum[power] = coeff
-            for power, coeff in other.coeff.items():
-                if power in coeffsum:
-                    coeffsum[power] += coeff
-                else:
-                    coeffsum[power] = coeff
-        else:
-            for power, coeff in other.coeff.items():
-                coeffsum[power] = coeff
-            for power, coeff in self.coeff.items():
+        for power, coeff in self.coeff.items():
+            coeffsum[power] = coeff
+
+        for power, coeff in other.coeff.items():
                 if power in coeffsum:
                     coeffsum[power] += coeff
                 else:
                     coeffsum[power] = coeff
 
         return Polynomial(coeffsum)
+
+    def __sub__(self, other):
+        coeffdiff = {}
+
+        for power, coeff in self.coeff.items():
+            coeffdiff[power] = coeff
+
+        for power, coeff in other.coeff.items():
+            if power in coeffdiff:
+                coeffdiff[power] -= coeff
+            else:
+                coeffdiff[power] = -coeff
+
+        return Polynomial(coeffdiff)
 
     def __mul__(self, other):
         coeff = {}
