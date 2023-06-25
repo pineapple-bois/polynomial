@@ -18,7 +18,7 @@ $a_n x^n+a_{n-1} x^{n-1}+\cdots+a_2 x^2+a_1 x+a_0$
 - Evaluation for a given value of `x`.
 - String representation.
 - Approximating roots numerically by the [Newton-Raphson method](https://en.wikipedia.org/wiki/Newton%27s_method)
-- Addition and multiplication
+- Addition, subtraction and multiplication
 - Computation of the derivative.
 - Plotting using `matplotlib`.
 
@@ -41,8 +41,11 @@ p1 = Polynomial({2: 3, 1: 1})
 p2 = Polynomial({3: 2, 2: -1, 0: 1})
 p3 = p1 + p2
 
+# Subtract two polynomials:
+p4 = p1 + p2
+
 # Multiply two polynomials:
-p4 = p1 * p2
+p5 = p1 * p2
 
 # Compute the derivative of the polynomial:
 dp = p.derivative()
@@ -51,4 +54,18 @@ dp = p.derivative()
 p.plot()
 ```
 ----
+##### Installation 
 
+Uses; 
+`Python 3.9`
+`matplotlib 3.6.2`
+`numpy 1.23.4`
+`regex 2022.10.31`
+
+Install the required dependencies from the `requirements.txt` file: 
+
+```bash
+pip install -r requirements.txt
+```
+
+----
