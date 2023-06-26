@@ -1,19 +1,42 @@
 # Creation of class `Polynomial`
 
-----
-
 The `Polynomial` class is a Python implementation that represents polynomials and provides various operations on polynomials. It allows you to create, evaluate, manipulate, approximate roots and plot polynomials easily.
 
 Where a polynomial in a single indeterminate $x$ can be written in the form, 
-$a_n x^n+a_{n-1} x^{n-1}+\cdots+a_2 x^2+a_1 x+a_0$
+$a_n x^n+a_{n-1} x^{n-1}+\cdots+a_2 x^2+a_1 x+a_0, n \in \mathbb{Z}^+$
 
 ----
 
-`poly_dict.py` contains a function `decompose_polynomial` which takes a polynomial equation as a string and extracts the coefficients of each term. It returns a dictionary where the keys are the powers and the values are the corresponding coefficients.
+`poly_dict.py` contains a function `decompose_polynomial` which takes a polynomial expression as a string and extracts the coefficients of each term. 
 
 ----
 
-##### `Polynomial` features
+### `decompose_polynomial` function
+
+Creates a dictionary representation of a polynomial.
+
+#### Usage
+
+```python
+def decompose_polynomial(formula: str):
+    """
+    Polynomial exponents are natural numbers.
+    If exponents are rationals or negative integers, the formula will not parse
+    :return Polynomial dictionary; {exponent: coefficient, ... }
+    """
+# Example usage:
+formula = "x^3 + 2*x^2 - 3*x - 1"
+polynomial = decompose_polynomial(formula)
+print(polynomial)
+
+# Output
+{3: 1.0, 2: 2.0, 1: -3.0, 0: -1.0}
+```
+-----
+
+### `Polynomial` Class
+
+##### Features
 - Creation using a dictionary format for coefficients.
 - Evaluation for a given value of `x`.
 - String representation.
@@ -24,7 +47,7 @@ $a_n x^n+a_{n-1} x^{n-1}+\cdots+a_2 x^2+a_1 x+a_0$
 
 ----
 
-##### `Polynomial` usage
+##### Usage
 
 ```python
 # Create a Polynomial object with coefficients {3: 2, 2: -1, 0: 1}:
@@ -60,7 +83,6 @@ Uses;
 `Python 3.9`
 `matplotlib 3.6.2`
 `numpy 1.23.4`
-`regex 2022.10.31`
 
 Install the required dependencies from the `requirements.txt` file: 
 
