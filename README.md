@@ -15,7 +15,7 @@ $a_n x^n+a_{n-1} x^{n-1}+\cdots+a_2 x^2+a_1 x+a_0, n \in \mathbb{Z}^+$
 
 Creates a dictionary representation of a polynomial.
 
-#### Usage
+##### Usage
 
 ```python
 def decompose_polynomial(formula: str):
