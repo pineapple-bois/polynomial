@@ -1,4 +1,5 @@
 import re
+from py_files.simplify_subz import Simplify
 
 
 def decompose_polynomial(formula: str):
@@ -16,9 +17,12 @@ def decompose_polynomial(formula: str):
     if not isinstance(formula, str):
         raise TypeError("Input must be a string representation of a polynomial.")
 
-    formula = formula.replace(' ', '').replace('^', '**')
+    simplified = str(Simplify(formula))
+    print(f"simplification: {simplified}")
+
+    formula = simplified.replace(' ', '').replace('^', '**')
     # Extract all variables in formula
-    variables = set(re.findall('[a-z]', formula))
+    variables = set(re.findall('[a-z]', simplified))
 
     # Check for uni-variate and multivariate cases
     if len(variables) > 1:
