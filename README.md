@@ -83,6 +83,7 @@ Uses;
 `Python 3.9`
 `matplotlib 3.6.2`
 `numpy 1.23.4`
+`sympy 1.11.1`
 
 Install the required dependencies from the `requirements.txt` file: 
 
