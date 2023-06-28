@@ -15,15 +15,13 @@ def decompose_polynomial(formula: str):
 
     # Check for uni-variate and multivariate cases
     if len(variables) > 1:
-        # More than one variable, so it's multivariate
-        multivariate = True
+        multivariate = True    # More than one variable, so it's multivariate
         # Check that the variables are only x, y, and z
         if variables.difference({'x', 'y', 'z'}):
             raise ValueError("For multivariate polynomials, variables can only be 'x', 'y', or 'z'")
 
     elif len(variables) == 1:
-        # One variable, so it's uni-variate
-        multivariate = False
+        multivariate = False   # One variable, so it's uni-variate
         # Check that the variable is x
         if variables.pop() != 'x':
             raise ValueError("For uni-variate polynomials, variable must be 'x'")
@@ -37,7 +35,7 @@ def decompose_polynomial(formula: str):
             r'[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:\*[a-z](?:\*\*\d+)?)*(?:\*[a-z](?:\*\*\d+)?)*|[+-]?'
             r'(?:[a-z](?:\*\*\d+)?)*(?:\*[a-z](?:\*\*\d+)?)*|[+-]?[a-z]', formula)
         r"""
-        [+-]?: Matches an optional "+" or "-" sign. r' indictates raw string
+        [+-]?: Matches an optional "+" or "-" sign. r indicates raw string
         
         1. '(?:\d+(?:\.\d*)?|\.\d+): Matches a number that can be an integer, a decimal, or a fraction. 
         \d+ matches one or more digits, \.\d* matches a decimal point followed by zero or more digits, 
@@ -54,8 +52,8 @@ def decompose_polynomial(formula: str):
         [+-]?[a-z]: Matches a variable 'x' with an optional '+' or '-' sign in front of it.
         
         """
-        terms = [term for term in terms if term]
-        terms = [term.replace('**', '^') for term in terms]
+        terms = [term for term in terms if term]    # remove any empty strings
+        terms = [term.replace('**', '^') for term in terms]     # analysis is simpler with only one iteration of '*'
         # Constructing the dictionary
         poly_dict = {}
         for term in terms:
@@ -75,7 +73,6 @@ def decompose_polynomial(formula: str):
                 # Initialize list of exponents
                 exponents = [0, 0, 0]
 
-                # Go through each remaining part
                 for part in parts:
                     # Each part is either of the form 'x', 'x^2', etc.
                     if '^' in part:
@@ -93,7 +90,8 @@ def decompose_polynomial(formula: str):
                         exponents[2] = exponent
 
                 # The key in the dictionary is a tuple of exponents
-                poly_dict[tuple(exponents)] = coefficient
+                tuple_key = tuple(exponents)
+                poly_dict[tuple_key] = coefficient
 
             elif '^' in term:  # Handle terms like '+x^2', '+y^2', etc.
                 parts = term.split('^')
@@ -140,6 +138,7 @@ def decompose_polynomial(formula: str):
 
         return poly_dict
 
+    # uni-variate case
     else:
         terms = re.findall(r'([+\-]?\s*(?:\d*\.\d+|\d+\.\d*|\.\d+|\d+(?:\.\d*)?)\*?x\*\*\d+|'
                            r'[-]?\s*(?:\d*\.\d+|\d+\.\d*|\.\d+|\d+(?:\.\d*)?)\*?x?|'
