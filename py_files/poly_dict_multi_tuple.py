@@ -39,17 +39,17 @@ def decompose_polynomial(formula: str):
         r"""
         [+-]?: Matches an optional "+" or "-" sign. r' indictates raw string
         
-        '(?:\d+(?:\.\d*)?|\.\d+): Matches a number that can be an integer, a decimal, or a fraction. 
+        1. '(?:\d+(?:\.\d*)?|\.\d+): Matches a number that can be an integer, a decimal, or a fraction. 
         \d+ matches one or more digits, \.\d* matches a decimal point followed by zero or more digits, 
         and | acts as a logical OR operator.
         
-        '(?:\*[a-z](?:\*\*\d+)?): Matches a term of the form '*x^n', where 'n' is an integer. 
+        2. '(?:\*[a-z](?:\*\*\d+)?): Matches a term of the form '*x^n', where 'n' is an integer. 
         * is a multiplication symbol, [a-z] matches any lowercase letter (representing a variable), 
         ** represents power operation, and \d+ matches the exponent which is one or more digits.
         *: Matches zero or more of the preceding group. It makes sure to match all terms in the form '*x^n'.
         |: Acts as a logical OR operator in regex.
         
-        '[+-]?(?:[a-z](?:\*\*\d+)?)*: Matches a term of the form 'x^n' or '+x^n' or '-x^n' where 'n' is an integer. 
+        3. '[+-]?(?:[a-z](?:\*\*\d+)?)*: Matches a term of the form 'x^n' or '+x^n' or '-x^n' where 'n' is an integer. 
         The group can repeat zero or more times to match all such terms.
         [+-]?[a-z]: Matches a variable 'x' with an optional '+' or '-' sign in front of it.
         
@@ -146,7 +146,6 @@ def decompose_polynomial(formula: str):
                            r'[+\-]?\s*x(?:\*\*\d+)?)', formula)
         r"""
         The regex pattern consists of three main parts separated by '|', which acts as a logical OR operator.
-        As in this instance, I do not replace '^' with '**'. Therefore, the regex is more complicated.
 
         1. '([+\-]?\s*(?:\d*\.\d+|\d+\.\d*|\.\d+|\d+(?:\.\d*)?)\*?x\*\*\d+':
         Matches a term with a coefficient and a power, like '+3.5*x**2' or '-x**2'.
@@ -170,6 +169,7 @@ def decompose_polynomial(formula: str):
         '\s*' matches any number of whitespace characters.
         'x(?:\*\*\d+)?' matches 'x**n' or 'x', where 'x' is the variable, '**' is the power operator,
          and 'n' is one or more digits (the power).
+         
         """
         terms = [term for term in terms if term]  # remove any empty strings
         powers = []
