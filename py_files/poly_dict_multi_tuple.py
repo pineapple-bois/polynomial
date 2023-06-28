@@ -3,12 +3,19 @@ import re
 
 def decompose_polynomial(formula: str):
     """
+    The input formula should be a string representation of the polynomial.
+
     Polynomial exponents are natural numbers.
     If exponents are rationals or negative integers, the formula will not parse
+
     :return Polynomial dictionary;
     Uni-variable: {exponent: coefficient}
     Multivariable: {(exponent_x, exponent_y, exponent_z): coefficient}
     """
+
+    if not isinstance(formula, str):
+        raise TypeError("Input must be a string representation of a polynomial.")
+
     formula = formula.replace(' ', '').replace('^', '**')
     # Extract all variables in formula
     variables = set(re.findall('[a-z]', formula))
